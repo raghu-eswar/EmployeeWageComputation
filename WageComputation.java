@@ -22,11 +22,13 @@ public class WageComputation {
     }
 
     public static void main(String[] args) {
+        int monthlyWage = 0;
         WageComputation wageComputation = new WageComputation(20);
-        boolean isPresent = wageComputation.isEmployeePresent();
-         if(isPresent) 
-            System.out.println("daily wage of employe : "+wageComputation.calculateDailyWage());
-        else
-            System.out.println("employee was not present");
+
+        for (int i=1; i<=20; i++) {
+            if (wageComputation.isEmployeePresent())
+                monthlyWage+= wageComputation.calculateDailyWage();
+        }
+        System.out.println("employee monthly wage of employee : "+monthlyWage);
     }
 }
