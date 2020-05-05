@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 
 public class Employee {
@@ -9,6 +11,7 @@ public class Employee {
     private int workHoursPerDay;
     private boolean isFullTimeEmployee;
     private int currentMonthWage;
+    private Map<String, ArrayList<Integer>> employeesDailyWageList;
 
     public Employee(String name, String employeeId) {
         this(name, employeeId,20, 8, "full-time");
@@ -68,6 +71,14 @@ public class Employee {
 
     public void setCurrentMonthWage(int currentMonthWage) {
         this.currentMonthWage = currentMonthWage;
+    }
+
+    public Map<String, ArrayList<Integer>> getEmployeesDailyWageList() {
+        return employeesDailyWageList;
+    }
+
+    public void setEmployeesDailyWageList(Map<String, ArrayList<Integer>> employeesDailyWageList) {
+        this.employeesDailyWageList = employeesDailyWageList;
     }
 
     public int calculateDailyWage() {
