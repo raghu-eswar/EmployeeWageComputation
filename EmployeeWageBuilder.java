@@ -1,43 +1,22 @@
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class WageComputation {
-    
-    static Random random = new Random();
-    private boolean isEmployeePresent;
-    private int wagePerHour;
-    private int workHoursPerDay;
-    private boolean fullTimeEmployee;
-
-    public WageComputation(int wagePerHour, int workHoursPerDay){
-        this.wagePerHour = wagePerHour;
-        this.workHoursPerDay = workHoursPerDay;
-        this.fullTimeEmployee = random.nextBoolean();
-    }
-
-    public boolean isEmployeePresent() {
-        return (random.nextInt(3) > 0);
-    }
-
-    public int calculateDailyWage() {
-        return this.workHoursPerDay * this.wagePerHour;
-    }
-
-    public static int calculateMonthlyWage(WageComputation company) {
-        int monthlyWage = 0;
-        for (int i=1; i<=20; i++) {
-            if (company.isEmployeePresent()) 
-                monthlyWage+= company.calculateDailyWage();
+public class EmployeeWageBuilder {
+    public Map<String, Integer> calculateMonthlyWage(ArrayList<Employee> employees) {
+        Map<String, Integer> employeesWages = new HashMap<String, Integer>();
+        for (Employee employee : employees) {
+            int currentMonthWage = 0;
+            int currentMonthWorkHours = 0;
+            for (int i=1; i<=20 && currentMonthWorkHours < 100; i++) {
+                if (employee.isEmployeePresent()) {
+                    currentMonthWage+= employee.calculateDailyWage();
+                    currentMonthWorkHours+= employee.getWorkHoursPerDay();
+                }
+            }
+            employeesWages.put(employee.getEmployeeId(), currentMonthWage);
+            employee.setCurrentMonthWage(currentMonthWage);
         }
-        return monthlyWage;
-    }
-
-    public static void main(String[] args) {
-        WageComputation D_Mart = new WageComputation(20, 8);
-        WageComputation reliance = new WageComputation(30, 8);
-
-        int D_martMonthlyWage = WageComputation.calculateMonthlyWage(D_Mart);
-        int relaincMonthlyWage = WageComputation.calculateMonthlyWage(reliance);
-        System.out.println("Dmart employee monthly wage : "+D_martMonthlyWage);
-        System.out.println("Reliance employee monthly wage : "+relaincMonthlyWage);
+        return employeesWages;
     }
 }
