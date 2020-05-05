@@ -5,10 +5,12 @@ public class WageComputation {
     static Random random = new Random();
     private int wagePerHour;
     private int workHoursPerDay;
+    private boolean fullTimeEmployee;
 
-    public WageComputation(int wagePerHour, int workHoursPerDay) {
+    public WageComputation(int wagePerHour){
         this.wagePerHour = wagePerHour;
-        this.workHoursPerDay = workHoursPerDay;
+        this.fullTimeEmployee = random.nextBoolean();
+        this.workHoursPerDay = (this.fullTimeEmployee)? 8 : 4;
     }
 
     public boolean isEmployeePresent() {
@@ -20,9 +22,9 @@ public class WageComputation {
     }
 
     public static void main(String[] args) {
-        WageComputation wageComputation = new WageComputation(20, 8);
+        WageComputation wageComputation = new WageComputation(20);
         boolean isPresent = wageComputation.isEmployeePresent();
-        if(isPresent) 
+         if(isPresent) 
             System.out.println("daily wage of employe : "+wageComputation.calculateDailyWage());
         else
             System.out.println("employee was not present");
