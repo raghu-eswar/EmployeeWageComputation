@@ -19,12 +19,14 @@ public class UserLogic {
         Company reliance = new Company("Reliance", wageBuilder, relianceEmployees);
         Map<String, Integer> D_MartWages = D_Mart.calculateEmployeesWage();
         Map<String, Integer> relianceWages = reliance.calculateEmployeesWage();
-        System.out.println("D mart wages");
+        System.out.println("D mart wages.........");
         for (String key : D_MartWages.keySet()) {
-            System.out.println(key + "       " + D_MartWages.get(key));
-        }System.out.println("Reliance wages");
+            System.out.println("Employee "+key + " wage :"+ D_MartWages.get(key));
+        }System.out.println("Reliance wages........");
         for (String key : relianceWages.keySet()) {
-            System.out.println(key + "       " + relianceWages.get(key));
+            System.out.println("Employee "+key + " wage :"+ relianceWages.get(key));
         }
+        System.out.println("D mart total wage : "+D_Mart.totalWageByCompany());
+        System.out.println("Reliance total wage : "+reliance.totalWageByCompany());
     }
 }
