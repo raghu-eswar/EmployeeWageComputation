@@ -28,4 +28,12 @@ public class EmployeeWageBuilder {
         }
         return employeesWages;
     }
+
+    public int companyTotalWage(ArrayList<Employee> employees) {
+        int companyTotalWage = 0;
+        for (Employee employee: employees) {
+            companyTotalWage+= employee.getCurrentMonthWage();
+        }
+        return companyTotalWage;
+    }
 }

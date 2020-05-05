@@ -16,4 +16,8 @@ public class Company {
     public Map<String, Integer> calculateEmployeesWage() {
         return wageBuilder.calculateMonthlyWage(employees);
     }
+    public int totalWageByCompany() {
+        return wageBuilder.companyTotalWage(employees);
+    }
+
 }
